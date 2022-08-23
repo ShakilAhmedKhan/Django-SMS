@@ -1,4 +1,6 @@
+from django.shortcuts import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from .models import Student
 
 # Create your views here.
@@ -12,3 +14,6 @@ def index(request):
 
     })
 
+def view_student(request, id):
+    student = Student.object.get(pk=id)
+    return HttpResponseRedirect(reverse('index'))
